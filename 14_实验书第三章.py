@@ -1,0 +1,16 @@
+s1 = "我喜欢"
+s2 = "Python"
+print(s1 + s2)
+print(s1 * 2)
+print(3 * s2)
+print('我' in s1)
+print(s1[0])
+print(s1[0:-1])
+print(s1[0:])
+print(s2[-3:-1])
+print(s1[::-1])
+print(s2[::2])
+print(s2[1::2])
+print(s1>s2)
+print(len(s1))
+print(len(s2))

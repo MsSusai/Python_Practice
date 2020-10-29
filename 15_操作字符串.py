@@ -1,0 +1,11 @@
+string = "www.moe.gov.cn"
+print(string[0])
+print(string[:3])
+print(string[-3:])
+print(len(string))
+print(string.index('o'))
+print(string.count('o'))
+print(string.replace('.', '-'))
+print(string.upper())
+newString = string.split('.')
+print(newString)
