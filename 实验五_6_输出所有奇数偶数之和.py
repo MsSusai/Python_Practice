@@ -7,4 +7,4 @@ for i in range(10):
         even += number
     else:
         odd += number
-print("奇数和为{}，偶数和为{}，平均数为{}".format(odd, even, odd + even / 10))
+print("奇数和为{}，偶数和为{}，平均数为{}".format(odd, even, (odd + even) / 10))
