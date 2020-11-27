@@ -1,3 +1,3 @@
 import saspy
 
-sas = saspy.SASsession()
+saspy.SASsession()

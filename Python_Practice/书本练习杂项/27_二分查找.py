@@ -5,7 +5,7 @@ ls.sort()
 low = 0
 high = len(ls) - 1
 
-while low < high:
+while low <= high:
     mid = int((low + high) / 2)
     if ls[mid] == x:
         print("已找到{}，索引为{}".format(x, mid))
