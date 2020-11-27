@@ -2,7 +2,7 @@ from random import randint
 
 set1 = {1, 3, 6, 4}
 set2 = set()
-set3 = {1, 3}
+set3 = {1, 4}
 for i in range(20):
     set2.add(randint(1, 20))
 print(set2)
