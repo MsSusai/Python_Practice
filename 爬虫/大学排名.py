@@ -1,0 +1,1 @@
+https://www.shanghairanking.cn/rankings/bcur/2020
