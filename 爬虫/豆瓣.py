@@ -25,7 +25,7 @@ def findData(websiteData, rankList, linkList):
         text = span.string  # 获得span标签中的所有内容
         rankList.append(text)
         a = item.find('a')
-        linkList.append(a['href'])
+        linkList.append(a['href'])  # 获得a标签内href链接
 
 
 def printData(rankList, linkList):
