@@ -1,5 +1,6 @@
 def selectSort(alist):
     total = len(alist)
+
     for i in range(len(alist) - 1):
         positionMax = 0
         for location in range(1, total):
