@@ -3,11 +3,15 @@ def gapInsertSort(alist, start, gap):
         move = alist[index]
         position = index
 
-        while position >= gap and alist[position - gap] > move:
-            alist[position] = alist[position - gap]
-            position = position - gap
-
-        alist[position] = move
+        while position > 0:
+            if alist[position - gap] > move:
+                alist[position] = alist[position - gap]
+                position = position - gap
+            else:
+                alist[position] = move
+                break
+        else:
+            alist[position] = move
 
 
 def shellSort(alist):
@@ -21,6 +25,6 @@ def shellSort(alist):
         sublistCount = sublistCount // 2
 
 
-test = [1, 5, 6, 2, 3, 2]
+test = [1, 5, 6, 2, 3, 2, 6, 7, 9, 10]
 shellSort(test)
 print(test)

@@ -1,17 +1,17 @@
 def insertSort(alist):
     for index in range(1, len(alist)):
         move = alist[index]
-        position = index
+        vacantIndex = index
 
-        while position > 0:
-            if alist[position - 1] > move:
-                alist[position] = alist[position - 1]
-                position -= 1
+        while vacantIndex > 0:
+            if alist[vacantIndex - 1] > move:
+                alist[vacantIndex] = alist[vacantIndex - 1]
+                vacantIndex -= 1
             else:
-                alist[position] = move
+                alist[vacantIndex] = move
                 break
 
 
-test = [1, 5, 6, 2, 3, 2]
+test = [1, 5, 6, 2, 3, 2, 6, 7, 9, 10]
 insertSort(test)
 print(test)
