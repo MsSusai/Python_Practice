@@ -30,7 +30,26 @@ def partition(alist, first, last):
     return right
 
 
+# pythonic
+def quick_sort(alist):
+    if len(alist) <= 1:
+        return alist
+    else:
+        mid = len(alist) // 2
+        left, right = [], []
+        splitValue = alist[mid]
+        alist.remove(splitValue)
+
+        for num in alist:
+            if num < splitValue:
+                left.append(num)
+            else:
+                right.append(num)
+        return quick_sort(left) + [splitValue] + quick_sort(right)
+
+
 test = [1, 5, 6, 2, 3, 2, 6, 7, 9, 10]
-test.sort()
-quickSort(test)
-print(test)
+print(quick_sort(test))
+# quickSort(test)
+# print(test)
+
