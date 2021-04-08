@@ -14,6 +14,7 @@ def buildParseTree(fpexp):
     eTree = BinaryTree('')
     pStack.push(eTree)
     currentTree = eTree
+
     for word in fplist:
         if word == '(':
             currentTree.insertLeft('')
@@ -31,4 +32,5 @@ def buildParseTree(fpexp):
             currentTree = pStack.pop()
         else:
             raise ValueError('运算表达式出现问题：' + word)
+
     return eTree
