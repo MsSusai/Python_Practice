@@ -6,6 +6,7 @@
 # 工具：PyCharm
 from pythonds.basic import Stack
 from pythonds.trees import BinaryTree
+import operator
 
 
 def buildParseTree(fpexp):
@@ -34,3 +35,16 @@ def buildParseTree(fpexp):
             raise ValueError('运算表达式出现问题：' + word)
 
     return eTree
+
+
+def evaluate(parseTree):
+    opers = {'+': operator.add, '-': operator.sub,
+             '*': operator.mul, '/': operator.truediv}
+    leftC = parseTree.getLeftChild()
+    rightC = parseTree.getRightChild()
+
+    if leftC and rightC:
+        fn = opers[parseTree.getRootVal()]
+        return fn(evaluate(leftC), evaluate(rightC))
+    else:
+        return parseTree.getRootVal()
