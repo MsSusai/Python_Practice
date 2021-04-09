@@ -9,6 +9,7 @@ from pythonds.trees import BinaryTree
 import operator
 
 
+# 解析树
 def buildParseTree(fpexp):
     fplist = fpexp.split()
     pStack = Stack()
@@ -37,6 +38,7 @@ def buildParseTree(fpexp):
     return eTree
 
 
+# 计算解析树
 def evaluate(parseTree):
     opers = {'+': operator.add, '-': operator.sub,
              '*': operator.mul, '/': operator.truediv}
@@ -48,3 +50,68 @@ def evaluate(parseTree):
         return fn(evaluate(leftC), evaluate(rightC))
     else:
         return parseTree.getRootVal()
+
+
+# 前序遍历
+def preorder(tree):
+    if tree:
+        print(tree.getRootVal())
+        preorder(tree.getLeftChild())
+        preorder(tree.getRightChild())
+
+
+# 中序遍历
+def postorder(tree):
+    if tree:
+        preorder(tree.getLeftChild())
+        print(tree.getRootVal())
+        preorder(tree.getRightChild())
+
+
+# 后序遍历
+def inorder(tree):
+    if tree:
+        preorder(tree.getLeftChild())
+        preorder(tree.getRightChild())
+        print(tree.getRootVal())
+
+
+# 后序求值
+def postorderEval(tree):
+    opers = {'+': operator.add, '-': operator.sub,
+             '*': operator.mul, '/': operator.truediv}
+    if tree:
+        leftVal = postorderEval(tree.getLeftChild())
+        rightVal = postorderEval(tree.getRightChild())
+        if leftVal and rightVal:
+            return opers[tree.getRootVal()](leftVal, rightVal)
+        else:
+            return tree.getRootVal()
+
+
+# 还原完全括号表达式
+def printExp(tree):
+    sumVal = ''
+
+    if tree:
+        currentVal = tree.getRootVal()
+        if isinstance(currentVal, int):
+            sumVal = printExp(tree.getLeftChild())
+        else:
+            sumVal = '(' + printExp(tree.getLeftChild())
+
+        sumVal = sumVal + str(tree.getRootVal())
+
+        if isinstance(currentVal, int):
+            sumVal = sumVal + printExp(tree.getRightChild())
+        else:
+            sumVal = sumVal + printExp(tree.getRightChild()) + ')'
+    return sumVal
+
+
+etree = BinaryTree('*')
+etree.insertRight(2)
+etree.insertLeft(3)
+preorder(etree)
+print(printExp(etree))
+print(postorderEval(etree))
