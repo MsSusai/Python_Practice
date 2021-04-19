@@ -13,7 +13,7 @@ def getData(url):
         r.encoding = r.apparent_encoding
         return r.text
     except Exception:
-        print("出现错误")
+        print("请求网页时出现错误")
         return ''
 
 
@@ -50,6 +50,7 @@ def downloadManga(PageList):
             count += 1
         except Exception:
             print("第{}张保存失败".format(count))
+            count += 1
             continue
 
 
