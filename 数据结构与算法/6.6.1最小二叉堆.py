@@ -14,15 +14,16 @@ class BinaryHeap:
         self.currentSize += 1
         self.percUp(self.currentSize)
 
+    # 小数据上浮
     def percUp(self, current):
         stop = False
         while current // 2 > 0 and not stop:
             if self.heapList[current] < self.heapList[current // 2]:
-                self.heapList[current], self.heapList[current // 2] = self.heapList[current // 2], self.heapList[
-                    current]
+                self.heapList[current], self.heapList[current // 2] = \
+                    self.heapList[current // 2], self.heapList[current]
             else:
                 stop = True
-            current = current // 2
+            current = current // 2  # 指向父节点
 
     def findMin(self):
         return self.heapList[1]
@@ -44,16 +45,19 @@ class BinaryHeap:
         self.percDown(1)
         return minValue
 
+    # 大数据下沉
     def percDown(self, current):
         stop = False
         while current * 2 <= self.currentSize and not stop:
-            father = self.minChild(current)
+            father = self.minChild(current)  # 寻找子结点中较小的那一个进行下沉
             if self.heapList[current] > self.heapList[father]:
-                self.heapList[current], self.heapList[father] = self.heapList[father], self.heapList[current]
+                self.heapList[current], self.heapList[father] = \
+                    self.heapList[father], self.heapList[current]
             else:
                 stop = True
             current = father
 
+    # 寻找子节点中较小的
     def minChild(self, current):
         if current * 2 + 1 > self.currentSize:
             return current * 2
@@ -64,12 +68,12 @@ class BinaryHeap:
                 return current * 2
 
     def buildHeap(self, alist):
-        self.heapList = [0] + alist[:]
-        self.currentSize = len(alist)
-        father = len(alist) // 2
+        self.heapList = [0] + alist[:]  # 初始化堆
+        self.currentSize = len(alist)  # 初始化长度
+        father = len(alist) // 2  # 最后节点的父节点
         while father > 0:
-            self.percDown(father)
-            father -= 1
+            self.percDown(father)  # 对每一个父节点都进行下沉操作
+            father -= 1  # 下一个父节点
 
 
 bh = BinaryHeap()
