@@ -60,7 +60,7 @@ count = 1
 mangaUrlList = []
 mangaPageList = []
 # print("正在下载第{}页".format(j + 1))
-url = 'https://e-hentai.org/g/1860095/45feb95230/'
+url = input("输入要爬取的网页：")
 
 websiteData = getData(url)
 findEveryJpgUrl(websiteData, mangaUrlList)
