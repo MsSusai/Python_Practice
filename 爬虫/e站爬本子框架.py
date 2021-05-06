@@ -54,19 +54,21 @@ def downloadManga(PageList):
             continue
 
 
-count = 1
+if __name__ == '__main__':
 
-# for j in range(5):
-mangaUrlList = []
-mangaPageList = []
-# print("正在下载第{}页".format(j + 1))
-url = input("输入要爬取的网页：")
+    count = 1
 
-websiteData = getData(url)
-findEveryJpgUrl(websiteData, mangaUrlList)
+    # for j in range(5):
+    mangaUrlList = []
+    mangaPageList = []
+    # print("正在下载第{}页".format(j + 1))
+    url = input("输入要爬取的网页：")
 
-for singleUrl in mangaUrlList:
-    webJpgData = getData(singleUrl)
-    findMangaPage(webJpgData, mangaPageList)
+    websiteData = getData(url)
+    findEveryJpgUrl(websiteData, mangaUrlList)
 
-downloadManga(mangaPageList)
+    for singleUrl in mangaUrlList:
+        webJpgData = getData(singleUrl)
+        findMangaPage(webJpgData, mangaPageList)
+
+    downloadManga(mangaPageList)
