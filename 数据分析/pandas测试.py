@@ -21,10 +21,11 @@ import pandas as pd
 # print(df1.sort_index(axis=0, ascending=False))
 # print(df1.sort_values(by='A'))
 
-dates = pd.date_range('20210521', periods=6)
-value = np.arange(24).reshape(6, 4)
-df1 = pd.DataFrame(value, index=dates, columns=['A', 'B', 'C', 'D'])
-print(df1)
+
+# dates = pd.date_range('20210521', periods=6)
+# value = np.arange(24).reshape(6, 4)
+# df1 = pd.DataFrame(value, index=dates, columns=['A', 'B', 'C', 'D'])
+# print(df1)
 
 # 简单切片
 # print(df1.A)  # 打印A行数据
@@ -62,3 +63,58 @@ print(df1)
 # print(df1.dropna(axis=0, how='all'))  # 全nan才丢掉行
 # print(df1.fillna(value=111)) # 替换nan值
 
+
+# 合并concat
+# df2 = pd.DataFrame(np.ones((3, 4)) * 0, columns=['A', 'B', 'C', 'D'])
+# df3 = pd.DataFrame(np.ones((3, 4)) * 1, columns=['A', 'B', 'C', 'D'])
+# df4 = pd.DataFrame(np.ones((3, 4)) * 2, columns=['A', 'B', 'C', 'D'])
+# res = pd.concat([df2, df3, df4], axis=0, ignore_index=True)
+# print(res)
+
+# join ['inner','outer']
+# df3 = pd.DataFrame(np.ones((3, 4)) * 1, columns=['A', 'B', 'C', 'D'], index=[1, 2, 3])
+# df4 = pd.DataFrame(np.ones((3, 4)) * 2, columns=['B', 'C', 'D', 'E'], index=[2, 3, 4])
+# res = pd.concat([df3, df4], join='inner', ignore_index=True)  # 交集
+# res = pd.concat([df3, df4], join='outer')  # 并集
+# print(res)
+
+# append
+# df2 = pd.DataFrame(np.ones((3, 4)) * 0, columns=['A', 'B', 'C', 'D'])
+# df3 = pd.DataFrame(np.ones((3, 4)) * 1, columns=['A', 'B', 'C', 'D'])
+# res = df2.append(df3, ignore_index=True)
+# print(res)
+
+# merge
+# left = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
+#                      'A': ['A0', 'A1', 'A2', 'A3'],
+#                      'B': ['B0', 'B1', 'B2', 'B3']})
+# right = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
+#                       'C': ['C0', 'C1', 'C2', 'C3'],
+#                       'D': ['D0', 'D1', 'D2', 'D3']})
+# res = pd.merge(left, right, on='key')
+# print(res)
+
+
+# how参数
+# left = pd.DataFrame({'key1': ['K0', 'K0', 'K1', 'K2'],
+#                      'key2': ['K0', 'K1', 'K0', 'K1'],
+#                      'A': ['A0', 'A1', 'A2', 'A3'],
+#                      'B': ['B0', 'B1', 'B2', 'B3']})
+# right = pd.DataFrame({'key1': ['K0', 'K1', 'K1', 'K2'],
+#                       'key2': ['K0', 'K0', 'K0', 'K0'],
+#                       'C': ['C0', 'C1', 'C2', 'C3'],
+#                       'D': ['D0', 'D1', 'D2', 'D3']})
+# res = pd.merge(left, right, on=['key1', 'key2'], how='inner')  # default for how='inner'
+# how = ['left', 'right', 'outer', 'inner']
+# res = pd.merge(left, right, on=['key1', 'key2'], how='left')
+# print(res)
+
+
+# indicator
+# df1 = pd.DataFrame({'col1': [0, 1], 'col_left': ['a', 'b']})
+# df2 = pd.DataFrame({'col1': [1, 2, 2], 'col_right': [2, 2, 2]})
+# print(df1)
+# print(df2)
+# res = pd.merge(df1, df2, on='col1', how='outer', indicator=True)
+# # give the indicator a custom name
+# res = pd.merge(df1, df2, on='col1', how='outer', indicator='indicator_column')
