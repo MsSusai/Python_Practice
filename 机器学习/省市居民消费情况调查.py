@@ -21,7 +21,7 @@ def loadData(filePath):
 
 
 if __name__ == '__main__':
-    data, cityName = loadData('city.txt')
+    data, cityName = loadData(r'E:\Code\python练习\机器学习\课程数据\聚类\31省市居民家庭消费水平-city.txt')
     km = KMeans(n_clusters=4)
     label = km.fit_predict(data)
     expenses = np.sum(km.cluster_centers_, axis=1)
