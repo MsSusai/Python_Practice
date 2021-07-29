@@ -15,6 +15,6 @@ def numberSum(O, E):
 
 
 if __name__ == '__main__':
-    o = np.array([13, 1, 2, 3])
-    e = np.array([4.75, 4.75, 4.75, 4.75])
+    o = np.array([107,168])
+    e = np.array([137.5,137.5])
     numberSum(o, e)

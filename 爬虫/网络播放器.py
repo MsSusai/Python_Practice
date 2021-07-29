@@ -1516,7 +1516,7 @@ padding: 1px 2px 1px 2px;
     def photo(self, num):
         try:
             audio = File(songs[num])
-            mArtwork = audio.tags['APIC:'].data
+            mArtwork = audio.tags['APIC:'].sexual
             with open(str(data + '/ls.png'), 'wb') as img:
                 img.write(mArtwork)
             try:
