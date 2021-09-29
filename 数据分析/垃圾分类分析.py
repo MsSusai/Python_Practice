@@ -22,8 +22,8 @@ print("性别卡平方检验结果：" + str(stats.chisquare(f_obs=observed, f_e
 sexualLabel = ["男", "女"]
 sexualData = [107, 168]
 plt.pie(sexualData, labels=sexualLabel, autopct="%.1f%%")
-plt.title("年龄分布")
-plt.savefig(r"C:\Users\sosai\Desktop\年龄分布.png", dpi=500, bbox_inches='tight')
+plt.title("性别分布")
+plt.savefig(r"C:\Users\sosai\Desktop\性别分布.png", dpi=500, bbox_inches='tight')
 plt.close()
 
 # 年龄制图
@@ -57,13 +57,13 @@ plt.close()
 
 # 对垃圾分类态度制图
 attitude = pd.read_csv(r"垃圾分类数据/对垃圾分类态度.csv").squeeze()
-attitude.plot.pie(autopct="%.1f%%", title='垃圾分类态度')
+attitude.plot.pie(autopct="%.1f%%", title='垃圾分类态度', explode=(0, 0.1, 0.1))
 plt.savefig(r"C:\Users\sosai\Desktop\垃圾分类态度.png", dpi=500, bbox_inches='tight')
 plt.close()
 
 # 社区垃圾分类设施
 have = pd.read_csv(r"垃圾分类数据/社区垃圾分类设施.csv").squeeze()
-have.plot.pie(autopct="%.1f%%", title='社区垃圾分类设施有无')
+have.plot.pie(autopct="%.1f%%", title='社区垃圾分类设施有无', explode=(0, 0.1))
 plt.savefig(r"C:\Users\sosai\Desktop\社区垃圾分类设施.png", dpi=500, bbox_inches='tight')
 plt.close()
 
