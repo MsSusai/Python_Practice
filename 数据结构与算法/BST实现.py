@@ -26,11 +26,12 @@ class BinarySearchTree:
             if val == node.data:
                 return node
             elif val > node.data:
-                self.searchNode(node.rightChild, val)
+                find = self.searchNode(node.rightChild, val)
             elif val < node.data:
-                self.searchNode(node.leftChild, val)
+                find = self.searchNode(node.leftChild, val)
             else:
                 raise "搜索时发生错误"
+        return find
 
     def insertNode(self, node, val):
         if node is None:
@@ -50,5 +51,6 @@ class BinarySearchTree:
             self.postOrder(root.rightChild)
 
 
-tree = BinarySearchTree([1, 6, 4])
+tree = BinarySearchTree([1, 6, 4, 2])
+print(tree.searchNode(tree.root, 6))
 tree.postOrder(tree.root)
