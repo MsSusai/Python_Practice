@@ -109,13 +109,13 @@ class BinarySearchTree:
                         self.__removeNode1_leaf__(minNode)
 
 
-tree = BinarySearchTree([4, 5, 2, 3, 6])
-print(tree.searchNode(tree.root, 6))
-tree.postOrder(tree.root)
-print()
-tree.deleteNode(5)
-tree.postOrder(tree.root)
-tree.deleteNode(4)
-print()
-tree.postOrder(tree.root)
-
+if __name__ == '__main__':
+    tree = BinarySearchTree([4, 5, 2, 3, 6])
+    print(tree.searchNode(tree.root, 6))
+    tree.postOrder(tree.root)
+    print()
+    tree.deleteNode(5)
+    tree.postOrder(tree.root)
+    tree.deleteNode(4)
+    print()
+    tree.postOrder(tree.root)
