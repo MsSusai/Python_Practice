@@ -33,9 +33,9 @@ def legalMoves(x, y, boardSize):
 
 def knightTour(depth, path, startNode, limit=63):
     startNode.setColor('gray')
-    path.append(startNode)
+    path.push(startNode)
     if depth < limit:
-        neighborList = list(orderByAvail(startNode))
+        neighborList = orderByAvail(startNode)
         done = False
         n = 0
         while n < len(neighborList) and not done:
@@ -50,13 +50,14 @@ def knightTour(depth, path, startNode, limit=63):
     return done
 
 
+# Warnsdorff启发式算法
 def orderByAvail(depthNode):
     resList = []
-    for v in depthNode.getConnections():
-        if v.getColor == 'white':
+    for v in list(depthNode.getConnections()):
+        if v.getColor() == 'white':
             c = 0
-            for w in v.getConnections():
-                if w.getColor == 'white':
+            for w in list(v.getConnections()):
+                if w.getColor() == 'white':
                     c += 1
             resList.append((c, v))
     resList.sort(key=lambda x: x[0])
@@ -65,8 +66,10 @@ def orderByAvail(depthNode):
 
 if __name__ == '__main__':
     graph = knightGraph(8)
-    path = []
+    path = Stack()
     startVert = graph.getVertex(4)
     knightTour(0, path, startVert)
-    for node in path:
-        print(node.getId())
+    idList = []
+    for i in range(path.size()):
+        idList.append(path.pop().getId())
+    print(idList[::-1])
