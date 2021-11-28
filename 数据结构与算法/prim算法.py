@@ -16,7 +16,7 @@ def prim(graph, start):
         currentVert = priorityQueue.delMin()
         for neighborVert in currentVert.getConnections():
             distance = currentVert.getDistance() + currentVert.getWeight(neighborVert)
-            if distance < neighborVert.getDistance():
+            if distance < neighborVert.getDistance() and neighborVert in priorityQueue:
                 neighborVert.setDistance(distance)
                 neighborVert.setPred(currentVert)
                 priorityQueue.decreaseKey(neighborVert, distance)

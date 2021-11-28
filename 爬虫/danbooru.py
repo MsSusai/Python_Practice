@@ -75,9 +75,9 @@ def downloadJpg(jpgList):
 
 if __name__ == '__main__':
     count = 1
-    for i in range(1, 15):
+    for i in range(1, 15): # 页数
         print("正在下载第{}页".format(i))
-        url = 'https://danbooru.donmai.us/posts?page=' + str(i) + '&tags=dise'
+        url = 'https://danbooru.donmai.us/posts?page=' + str(i) + '&tags=dise' # 要爬的人
         jpgUrlList = []
         jpgList = []
 
