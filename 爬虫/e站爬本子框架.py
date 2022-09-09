@@ -7,7 +7,8 @@ def getData(url):
         head = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
             AppleWebKit/537.36 (KHTML, like Gecko) \
-            Chrome/88.0.4324.146 Safari/537.36'}
+            Chrome/88.0.4324.146 Safari/537.36',
+            "proxy": "127.0.0.1:10809"}
         r = requests.get(url, timeout=30, headers=head)
         r.raise_for_status()
         r.encoding = r.apparent_encoding
@@ -58,17 +59,17 @@ if __name__ == '__main__':
 
     count = 1
 
-    # for j in range(5):
-    mangaUrlList = []
-    mangaPageList = []
-    # print("正在下载第{}页".format(j + 1))
-    url = input("输入要爬取的网页：")
+    for j in range(2):
+        mangaUrlList = []
+        mangaPageList = []
+        print("正在下载第{}页".format(j + 1))
+        url = input("输入要爬取的网页：")
 
-    websiteData = getData(url)
-    findEveryJpgUrl(websiteData, mangaUrlList)
+        websiteData = getData(url)
+        findEveryJpgUrl(websiteData, mangaUrlList)
 
-    for singleUrl in mangaUrlList:
-        webJpgData = getData(singleUrl)
-        findMangaPage(webJpgData, mangaPageList)
+        for singleUrl in mangaUrlList:
+            webJpgData = getData(singleUrl)
+            findMangaPage(webJpgData, mangaPageList)
 
-    downloadManga(mangaPageList)
+        downloadManga(mangaPageList)

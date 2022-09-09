@@ -34,7 +34,7 @@ class Car:
         return
 
 
-class Battery:
+class Battery(object):
     def __init__(self, battery):
         self.batterySize = battery
 
